@@ -1,9 +1,9 @@
-const { Thought, User, Reaction } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
   async getThoughts(req, res) {
     try {
-      const thoughts = await Thought.find().select('-__v').populate('reactions');
+      const thoughts = await Thought.find().select('-__v')
       res.json(thoughts);
     } catch (err) {
       res.status(500).json(err);
@@ -11,7 +11,7 @@ module.exports = {
   },
   async getSingleThought(req, res) {
     try {
-      const thought = await Thought.findOne({ _id: req.params.thoughtId }).populate('reactions');;
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
 
       if (!thought) {
         return res.status(404).json({ message: 'No thought with that ID' });
@@ -66,7 +66,7 @@ module.exports = {
   // TODO: Add comments to the functionality of the deleteThought method
   async deleteThought(req, res) {
     try {
-      const thought = await Thought.findOneAndRemove({ _id: req.params.ThoughtId });
+      const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
 
       if (!thought) {
         return res.status(404).json({ message: 'No thought with this id!' });
@@ -80,7 +80,7 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: 'Thought created but no user with this id!',
+          message: 'Thought deleted but no user with this id!',
         });
       }
 
@@ -104,6 +104,7 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
+      console.log(err);
       res.status(500).json(err);
     }
   },
