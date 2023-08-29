@@ -22,7 +22,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the createThought method
+
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
@@ -44,7 +44,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the updateThought method
+
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -63,7 +63,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the deleteThought method
+
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -89,7 +89,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the addReaction method
+
   async addReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -108,7 +108,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // TODO: Add comments to the functionality of the addReaction method
+
   async removeReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
